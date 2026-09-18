@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mail-secretary2"
+version = "0.1.0"
+description = "Privacy-first Gmail triage and reply-drafting CLI with local redaction."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = [
+  "openai>=1.0.0",
+  "google-api-python-client>=2.0.0",
+  "google-auth>=2.0.0",
+  "google-auth-oauthlib>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+mail-secretary = "mail_secretary.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
